@@ -27,16 +27,17 @@ class Lab
     public static void Main(string[] args)
     {
         int n = int.Parse(Console.ReadLine());
-        int  pred, min=1000, k, count=0, next;
-        pred= int.Parse(Console.ReadLine());
+        int pred, min = int.MaxValue, k, count = 0, next;
+        pred = int.Parse(Console.ReadLine());
         if (Math.Abs(pred) % 2 == 0)
         {
             count++;
         }
-        else {
+        else
+        {
             count = 0;
         }
-        for (k=1; k<n; k++)
+        for (k = 1; k < n; k++)
         {
             next = int.Parse(Console.ReadLine());
             if (Math.Abs(next) % 2 == 0)
@@ -45,12 +46,28 @@ class Lab
             }
             else
             {
-                min = Math.Min(min,count);
+                if (count > 0) 
+                { 
+                    min = Math.Min(min, count); 
+                    count = 0; 
+                }
             }
         }
-        Console.WriteLine(min);
+        if (count > 0) 
+        {
+            min = Math.Min(min, count); 
+        } 
+        if (min == int.MaxValue) 
+        {
+            Console.WriteLine("Четных элементов нет"); 
+        } 
+        else 
+        {
+            Console.WriteLine(min); 
+        }
     }
 }
+
 
 
 
