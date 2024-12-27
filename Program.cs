@@ -73,22 +73,21 @@ class Lab
 
 //определить максимальную сумму подпоследовательности состоящей из четных элементов
 using static System.Math;
+
 class Lab
 {
     public static void Main(string[] args)
     {
         int n = int.Parse(Console.ReadLine());
-        int pred, max = -10000, k, sum = 0, next;
+        int pred, max = int.MinValue, sum = 0, next;
+
         pred = int.Parse(Console.ReadLine());
         if (Math.Abs(pred) % 2 == 0)
         {
             sum = sum + pred;
         }
-        else
-        {
-            sum = 0;
-        }
-        for (k = 1; k < n; k++)
+
+        for (int k = 1; k < n; k++)
         {
             next = int.Parse(Console.ReadLine());
             if (Math.Abs(next) % 2 == 0)
@@ -101,6 +100,10 @@ class Lab
                 sum = 0;
             }
         }
+
+        max = Math.Max(max, sum);
+
         Console.WriteLine(max);
     }
 }
+
